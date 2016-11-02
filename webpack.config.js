@@ -8,6 +8,7 @@ module.exports = {
     entry: "./main",
     output: {
         path: path.join(__dirname, 'dist'),
+        publicPath: "/",
         filename: "bundle.js"
     },
     module:{
@@ -27,6 +28,10 @@ module.exports = {
                 })
             }
         ]
+    },
+    devServer:{
+        host:'localhost',
+        port:8080
     },
     plugins: [
         new ExtractTextPlugin("main.css")

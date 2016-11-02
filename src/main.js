@@ -2,5 +2,5 @@
 
 import "./css/style.css";
 
-let a="hello";
+let a="hello boy!";
 alert(a);
