@@ -1,7 +1,8 @@
 'use strict';
 
-var path = require('path');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var path = require('path'),
+    ExtractTextPlugin = require("extract-text-webpack-plugin"),
+    webpack = require('webpack');
 
 module.exports = {
     context: path.join(__dirname, 'src'),
@@ -11,7 +12,7 @@ module.exports = {
         publicPath: "/",
         filename: "bundle.js"
     },
-    module:{
+    module: {
         loaders: [
             {
                 test: /\.js$/,
@@ -33,11 +34,12 @@ module.exports = {
             }
         ]
     },
-    devServer:{
-        host:'localhost',
-        port:8080
+    devServer: {
+        host: 'localhost',
+        port: 8080,
+        hot:true
     },
     plugins: [
-        new ExtractTextPlugin("main.css")
+        new ExtractTextPlugin({filename:'main.css', disable: process.env.NODE_ENV != 'production'})
     ]
 }
